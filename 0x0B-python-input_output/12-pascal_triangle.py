@@ -1,30 +1,24 @@
 #!/usr/bin/python3
+"""
+Defines pasacal triangle that create list of lists
+"""
+
+
 def pascal_triangle(n):
-    """ Function that returns the pascal triangle
-
-    Args:
-        n: number of lines
-
-    Returns:
-        matrix: a matrix with the pascal triangle
-
     """
-
-    matrix = []
-    prev = []
-
+    defines triangle module
+    """
+    if n <= 0:
+        return []
+    temp = []
+    l = []
     for i in range(n):
-        res_list = []
-        p1 = -1
-        p2 = 0
-        for j in range(len(prev) + 1):
-            if p1 == -1 or p2 == len(prev):
-                res_list += [1]
+        row = []
+        for j in range(i + 1):
+            if i == 0 or j == 0 or i == j:
+                row.append(1)
             else:
-                res_list += [prev[p1] + prev[p2]]
-            p1 += 1
-            p2 += 1
-        matrix.append(res_list)
-        prev = res_list[:]
-
-    return matrix
+                row.append(l[j] + l[j - 1])
+        l = row
+        temp.append(row)
+    return temp
